@@ -5,6 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bakker & Barøy - Deep Tech Consulting</title>
     <style>
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #fafafa;
+            --bg-accent: #f5f5f5;
+            --text-primary: #0a0a0a;
+            --text-secondary: #666666;
+            --text-tertiary: #999999;
+            --border: #e5e5e5;
+            --accent: #f59e0b;
+            --accent-hover: #d97706;
+            --nav-bg: rgba(255, 255, 255, 0.8);
+        }
+        
+        [data-theme="dark"] {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111111;
+            --bg-accent: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #a3a3a3;
+            --text-tertiary: #666666;
+            --border: #262626;
+            --accent: #fbbf24;
+            --accent-hover: #f59e0b;
+            --nav-bg: rgba(10, 10, 10, 0.8);
+        }
+        
         * {
             margin: 0;
             padding: 0;
@@ -14,298 +40,465 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
             line-height: 1.6;
-            color: #1a1a1a;
-            background: #fafafa;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            transition: background 0.3s ease, color 0.3s ease;
         }
         
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid #e0e0e0;
+            background: var(--nav-bg);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
             z-index: 1000;
-            padding: 1.5rem 0;
+            padding: 1rem 0;
         }
         
         nav .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 3rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
         
         .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #1a1a1a;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
             text-decoration: none;
-            letter-spacing: -0.5px;
+            letter-spacing: -0.3px;
         }
         
         nav ul {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             list-style: none;
         }
         
         nav a {
-            color: #1a1a1a;
+            color: var(--text-secondary);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s;
+            font-size: 0.9rem;
+            transition: color 0.2s;
         }
         
         nav a:hover {
-            color: #666;
+            color: var(--text-primary);
+        }
+        
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .hamburger span {
+            width: 20px;
+            height: 2px;
+            background: var(--text-primary);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
         }
         
         .hero {
-            margin-top: 80px;
-            padding: 8rem 2rem 6rem;
+            margin-top: 60px;
+            padding: 10rem 3rem 8rem;
             text-align: center;
-            background: linear-gradient(180deg, #ffffff 0%, #fafafa 100%);
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
+            font-size: 4rem;
+            font-weight: 600;
             margin-bottom: 1.5rem;
-            line-height: 1.2;
-            letter-spacing: -1px;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            color: var(--text-primary);
         }
         
         .hero .subtitle {
-            font-size: 1.5rem;
-            color: #666;
-            max-width: 800px;
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 700px;
             margin: 0 auto 3rem;
             font-weight: 400;
+            line-height: 1.6;
         }
         
         .cta-button {
             display: inline-block;
-            padding: 1rem 2.5rem;
-            background: #1a1a1a;
-            color: white;
+            padding: 0.875rem 2rem;
+            background: var(--text-primary);
+            color: var(--bg-primary);
             text-decoration: none;
-            border-radius: 6px;
-            font-weight: 600;
-            transition: transform 0.2s, box-shadow 0.2s;
-            border: 2px solid #1a1a1a;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: opacity 0.2s;
+            border: 1px solid var(--text-primary);
         }
         
         .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            opacity: 0.8;
+            transform: translateY(-1px);
         }
         
         .cta-button.secondary {
-            background: white;
-            color: #1a1a1a;
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border);
             margin-left: 1rem;
         }
         
+        .cta-button.secondary:hover {
+            background: var(--bg-accent);
+            border-color: var(--accent);
+        }
+        
         section {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 5rem 2rem;
+            padding: 6rem 3rem;
+        }
+        
+        section.alt-bg {
+            background: var(--bg-secondary);
+            max-width: 100%;
+        }
+        
+        section.alt-bg > * {
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         h2 {
             font-size: 2.5rem;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
             text-align: center;
-            font-weight: 700;
-            letter-spacing: -0.5px;
+            font-weight: 600;
+            letter-spacing: -1px;
+            color: var(--text-primary);
         }
         
         .usp-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
             margin-top: 4rem;
         }
         
         .usp-card {
-            text-align: center;
             padding: 2rem;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: border-color 0.2s;
+        }
+        
+        .usp-card:hover {
+            border-color: var(--accent);
         }
         
         .usp-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             margin-bottom: 1rem;
             font-weight: 600;
+            color: var(--text-primary);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .usp-card h3::before {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            flex-shrink: 0;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+        
+        .usp-check h3::before {
+            content: '01';
+        }
+        
+        .usp-lightning h3::before {
+            content: '02';
+        }
+        
+        .usp-target h3::before {
+            content: '03';
         }
         
         .usp-card p {
-            color: #666;
-            font-size: 1.1rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
         }
         
         .services-grid {
             display: grid;
-            gap: 2rem;
+            gap: 1.5rem;
             margin-top: 3rem;
         }
         
         .service-card {
-            background: white;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 2.5rem;
-            transition: transform 0.2s, box-shadow 0.2s;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: border-color 0.2s;
         }
         
         .service-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-color: var(--accent);
         }
         
         .service-card h3 {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             margin-bottom: 0.5rem;
             font-weight: 600;
+            color: var(--text-primary);
         }
         
         .service-duration {
-            color: #666;
-            font-size: 0.95rem;
+            color: var(--accent);
+            font-size: 0.85rem;
             margin-bottom: 1rem;
-            font-weight: 500;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
         .service-card p {
-            color: #666;
-            font-size: 1.1rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
             line-height: 1.7;
         }
         
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
             margin-top: 3rem;
         }
         
         .team-member {
-            background: white;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 2.5rem;
-            text-align: center;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
         }
         
         .team-member.placeholder {
-            opacity: 0.6;
+            opacity: 0.5;
         }
         
         .team-photo {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background: #e0e0e0;
-            margin: 0 auto 1.5rem;
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            background: var(--bg-accent);
+            margin-bottom: 1.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
-            color: #999;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-secondary);
         }
         
         .team-member h3 {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             margin-bottom: 0.5rem;
             font-weight: 600;
+            color: var(--text-primary);
         }
         
         .team-member .role {
-            color: #666;
+            color: var(--accent);
             margin-bottom: 1.5rem;
             font-weight: 500;
+            font-size: 0.9rem;
         }
         
         .team-member p {
-            color: #666;
+            color: var(--text-secondary);
             line-height: 1.7;
-            text-align: left;
+            font-size: 0.9rem;
         }
         
         .team-member .expertise {
             margin-top: 1.5rem;
             padding-top: 1.5rem;
-            border-top: 1px solid #e0e0e0;
+            border-top: 1px solid var(--border);
         }
         
         .team-member .expertise h4 {
-            font-size: 0.9rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: #999;
+            color: var(--text-tertiary);
             margin-bottom: 0.8rem;
+            font-weight: 600;
         }
         
         .team-member .expertise p {
-            font-size: 0.95rem;
+            font-size: 0.85rem;
         }
         
         .contact {
-            background: #1a1a1a;
-            color: white;
+            background: var(--bg-secondary);
             text-align: center;
-            padding: 5rem 2rem;
-            margin-top: 5rem;
+            padding: 6rem 3rem;
+            margin-top: 6rem;
         }
         
         .contact h2 {
-            color: white;
+            color: var(--text-primary);
             margin-bottom: 1.5rem;
         }
         
         .contact p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             margin-bottom: 2rem;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+            color: var(--text-secondary);
         }
         
         .contact a {
-            color: white;
-            font-size: 1.5rem;
+            color: var(--text-primary);
+            font-size: 1.25rem;
             text-decoration: none;
-            border-bottom: 2px solid white;
+            border-bottom: 2px solid var(--accent);
             padding-bottom: 4px;
-            transition: opacity 0.3s;
+            transition: opacity 0.2s;
         }
         
         .contact a:hover {
             opacity: 0.7;
+            color: var(--accent);
         }
         
         footer {
-            background: #0a0a0a;
-            color: #999;
+            background: var(--bg-primary);
+            color: var(--text-tertiary);
             text-align: center;
-            padding: 2rem;
-            font-size: 0.9rem;
+            padding: 3rem 2rem;
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+            position: relative;
+        }
+        
+        .theme-toggle {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--bg-accent);
+            border: 1px solid var(--border);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            z-index: 1000;
+        }
+        
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+        
+        .theme-toggle svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--text-primary);
         }
         
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
+            .hamburger {
+                display: flex;
             }
             
-            .hero .subtitle {
-                font-size: 1.2rem;
+            nav .container {
+                padding: 0 1.5rem;
             }
             
             nav ul {
-                gap: 1rem;
-                font-size: 0.9rem;
+                position: fixed;
+                top: 60px;
+                right: -100%;
+                width: 70%;
+                max-width: 300px;
+                background: var(--nav-bg);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                border-left: 1px solid var(--border);
+                transition: right 0.3s ease;
+                height: calc(100vh - 60px);
+            }
+            
+            nav ul.active {
+                right: 0;
+            }
+            
+            nav ul li {
+                width: 100%;
+            }
+            
+            nav ul a {
+                display: block;
+                padding: 0.5rem 0;
+                font-size: 1rem;
+            }
+            
+            .hero {
+                padding: 6rem 1.5rem 4rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+                letter-spacing: -1px;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.1rem;
             }
             
             .cta-button.secondary {
@@ -313,8 +506,19 @@
                 margin-top: 1rem;
             }
             
+            section {
+                padding: 4rem 1.5rem;
+            }
+            
             h2 {
                 font-size: 2rem;
+            }
+            
+            .theme-toggle {
+                bottom: 1.5rem;
+                right: 1.5rem;
+                width: 45px;
+                height: 45px;
             }
         }
     </style>
@@ -323,6 +527,11 @@
     <nav>
         <div class="container">
             <a href="#" class="logo">Bakker & Barøy</a>
+            <button class="hamburger" aria-label="Meny">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <ul>
                 <li><a href="#tjenester">Tjenester</a></li>
                 <li><a href="#team">Team</a></li>
@@ -341,22 +550,22 @@
     <section>
         <h2>Hvorfor du skal velge oss.</h2>
         <div class="usp-grid">
-            <div class="usp-card">
+            <div class="usp-card usp-check">
                 <h3>Vi har vist at vi kan.</h3>
-                <p>Vi har ledet store transformasjoner, bygget produkter fra grunnen av, og tatt teknologibedrifter fra idé til skalering. Vi har sittet i styrerommet, kodet løsningene, og sett hva som faktisk skjer når strategien møter virkeligheten. Det gir oss et annerledes perspektiv – vi vet hva som holder og hva som bare ser bra ut på papiret.</p>
+                <p>Vi har ledet store transformasjoner, bygget produkter fra grunnen av, og tatt teknologibedrifter fra idé til skalering. Vi har sittet i styrerommet, kodet løsningene, og sett hva som faktisk skjer når strategien møter virkeligheten.</p>
             </div>
-            <div class="usp-card">
+            <div class="usp-card usp-lightning">
                 <h3>Dager, ikke måneder</h3>
-                <p>Lang erfaring har lært oss hva som betyr noe og hva som er støy. Det gjør at vi kan levere på dager det andre trenger måneder på. Du får konkrete svar du kan handle på, ikke omfattende rapporter. Fordi noen ganger er det viktigste å bare komme videre.</p>
+                <p>Lang erfaring har lært oss hva som betyr noe og hva som er støy. Det gjør at vi kan levere på dager det andre trenger måneder på. Du får konkrete svar du kan handle på, ikke omfattende rapporter.</p>
             </div>
-            <div class="usp-card">
+            <div class="usp-card usp-target">
                 <h3>Problem først</h3>
-                <p>Vi bruker enkle verktøy og lang erfaring. Det gir oss frihet til å tenke originalt om problemet ditt, ikke tvinge det inn i vårt rammeverk. Vi tør også å si de vanskelige tingene – som at løsningen kanskje ikke er teknologisk, eller at dere bør droppe hele satsingen. Det er lettere når du ikke har en konsulenttime-meter som tikker.</p>
+                <p>Vi bruker enkle verktøy og lang erfaring. Det gir oss frihet til å tenke originalt om problemet ditt, ikke tvinge det inn i vårt rammeverk. Vi tør også å si de vanskelige tingene – som at løsningen kanskje ikke er teknologisk.</p>
             </div>
         </div>
     </section>
 
-    <section id="tjenester">
+    <section id="tjenester" class="alt-bg">
         <h2>Tjenester</h2>
         <div class="services-grid">
             <div class="service-card">
@@ -399,7 +608,7 @@
                 <h3>Leif Arne Bakker</h3>
                 <div class="role">Partner</div>
                 <p>Leif Arne er en erfaren teknolog, produktutvikler og leder med over 20 års erfaring fra skjæringspunktet mellom forretningsstrategi og teknologi. Han har ledet store transformasjonsprosjekter i offentlig sektor, bygget nye forretningsmodeller og digitale tjenester fra grunnen av, og vært CTO i både store konsulentselskaper og tech-startups.</p>
-                <p style="margin-top: 1rem;">Han har lang erfaring som strategisk IT-rådgiver fra BEKK Consulting og Capgemini, og har senere ledet produktutvikling og teknologiorganisasjoner i både etablerte selskaper som Posten og vekstselskaper. Leif er kjent for å tenke originalt om komplekse problemer, og for å tørre å ta de vanskelige valgene andre vegrer seg for. Samtidig er han planmessig nok til at tingene faktisk skjer – ikke bare i strategidokumentet, men i virkeligheten.</p>
+                <p style="margin-top: 1rem;">Han har lang erfaring som strategisk IT-rådgiver fra BEKK Consulting og Capgemini, og har senere ledet produktutvikling og teknologiorganisasjoner i både etablerte selskaper som Posten og vekstselskaper. Leif er kjent for å tenke originalt om komplekse problemer, og for å tørre å ta de vanskelige valgene andre vegrer seg for.</p>
                 <div class="expertise">
                     <h4>Ekspertise</h4>
                     <p>Teknologi- og produktutvikling, virksomhetsarkitektur, forretningsmodeller, digital strategi, IT-transformasjon, maskinlæring</p>
@@ -431,5 +640,94 @@
     <footer>
         <p>&copy; 2025 Bakker & Barøy. All rights reserved.</p>
     </footer>
+    
+    <button class="theme-toggle" aria-label="Toggle dark mode">
+        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <svg class="moon-icon" style="display: none;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+    </button>
+    
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('nav ul');
+        const navLinks = document.querySelectorAll('nav ul a');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+        
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('nav')) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
+        
+        // Dark mode toggle with system preference
+        const themeToggle = document.querySelector('.theme-toggle');
+        const sunIcon = document.querySelector('.sun-icon');
+        const moonIcon = document.querySelector('.moon-icon');
+        const html = document.documentElement;
+        
+        // Function to get preferred theme
+        function getPreferredTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                return savedTheme;
+            }
+            // Check system preference
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        
+        // Function to update theme
+        function setTheme(theme) {
+            html.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            
+            if (theme === 'dark') {
+                sunIcon.style.display = 'none';
+                moonIcon.style.display = 'block';
+            } else {
+                sunIcon.style.display = 'block';
+                moonIcon.style.display = 'none';
+            }
+        }
+        
+        // Set initial theme
+        setTheme(getPreferredTheme());
+        
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                setTheme(e.matches ? 'dark' : 'light');
+            }
+        });
+        
+        // Toggle theme on click
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            setTheme(newTheme);
+        });
+    </script>
 </body>
 </html>
