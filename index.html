@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bakker & Barøy - Deep Tech Consulting</title>
+    <meta name="description" content="B&B - Deep tech consulting. Vi løser problemene andre snakker seg bort fra. Teknologistrategi, AI-implementering og digital transformasjon.">
+    <title>B&B - Deep Tech Consulting</title>
     <style>
         :root {
             --bg-primary: #ffffff;
@@ -314,77 +315,6 @@
             line-height: 1.7;
         }
         
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .team-member {
-            background: var(--bg-primary);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 2rem;
-        }
-        
-        .team-member.placeholder {
-            opacity: 0.5;
-        }
-        
-        .team-photo {
-            width: 80px;
-            height: 80px;
-            border-radius: 12px;
-            background: var(--bg-accent);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--text-secondary);
-        }
-        
-        .team-member h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-        
-        .team-member .role {
-            color: var(--accent);
-            margin-bottom: 1.5rem;
-            font-weight: 500;
-            font-size: 0.9rem;
-        }
-        
-        .team-member p {
-            color: var(--text-secondary);
-            line-height: 1.7;
-            font-size: 0.9rem;
-        }
-        
-        .team-member .expertise {
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border);
-        }
-        
-        .team-member .expertise h4 {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-tertiary);
-            margin-bottom: 0.8rem;
-            font-weight: 600;
-        }
-        
-        .team-member .expertise p {
-            font-size: 0.85rem;
-        }
-        
         .contact {
             background: var(--bg-secondary);
             text-align: center;
@@ -412,7 +342,7 @@
             text-decoration: none;
             border-bottom: 2px solid var(--accent);
             padding-bottom: 4px;
-            transition: opacity 0.2s;
+            transition: opacity 0.2s, color 0.2s;
         }
         
         .contact a:hover {
@@ -427,7 +357,6 @@
             padding: 3rem 2rem;
             font-size: 0.85rem;
             border-top: 1px solid var(--border);
-            position: relative;
         }
         
         .theme-toggle {
@@ -455,81 +384,6 @@
             width: 20px;
             height: 20px;
             fill: var(--text-primary);
-        }
-        
-        /* Gift modal */
-        .gift-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 10000;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .gift-modal.active {
-            display: flex;
-            opacity: 1;
-        }
-        
-        .gift-content {
-            max-width: 90%;
-            max-height: 90vh;
-            position: relative;
-            animation: giftAppear 0.5s ease;
-            text-align: center;
-        }
-        
-        .gift-message {
-            color: white;
-            font-size: 1.1rem;
-            line-height: 1.7;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 0 1rem;
-        }
-        
-        .gift-content img {
-            max-width: 100%;
-            max-height: 70vh;
-            object-fit: contain;
-            border-radius: 12px;
-        }
-        
-        .gift-close {
-            position: absolute;
-            top: -40px;
-            right: 0;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 2rem;
-            cursor: pointer;
-            padding: 0.5rem;
-            line-height: 1;
-        }
-        
-        .gift-close:hover {
-            opacity: 0.7;
-        }
-        
-        @keyframes giftAppear {
-            from {
-                transform: scale(0.8);
-                opacity: 0;
-            }
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
         }
         
         @media (max-width: 768px) {
@@ -617,7 +471,6 @@
             </button>
             <ul>
                 <li><a href="#tjenester">Tjenester</a></li>
-                <li><a href="#team">Team</a></li>
                 <li><a href="#kontakt">Kontakt</a></li>
             </ul>
         </div>
@@ -631,19 +484,19 @@
     </div>
 
     <section>
-        <h2>Hvorfor du skal velge oss.</h2>
+        <h2>Hvorfor velge oss</h2>
         <div class="usp-grid">
             <div class="usp-card usp-check">
-                <h3>Vi har vist at vi kan.</h3>
-                <p>Vi har ledet store transformasjoner, bygget produkter fra grunnen av, og tatt teknologibedrifter fra idé til skalering. Vi har sittet i styrerommet, kodet løsningene, og sett hva som faktisk skjer når strategien møter virkeligheten.</p>
+                <h3>Vi har vist at vi kan</h3>
+                <p>Vi har ledet store transformasjoner, bygget produkter fra grunnen av, og tatt teknologibedrifter fra idé til skalering. Vi vet hva som holder og hva som bare ser bra ut på papiret.</p>
             </div>
             <div class="usp-card usp-lightning">
                 <h3>Dager, ikke måneder</h3>
-                <p>Lang erfaring har lært oss hva som betyr noe og hva som er støy. Det gjør at vi kan levere på dager det andre trenger måneder på. Du får konkrete svar du kan handle på, ikke omfattende rapporter.</p>
+                <p>Lang erfaring har lært oss hva som betyr noe og hva som er støy. Du får konkrete svar du kan handle på, ikke omfattende rapporter.</p>
             </div>
             <div class="usp-card usp-target">
                 <h3>Problem først</h3>
-                <p>Vi bruker enkle verktøy og lang erfaring. Det gir oss frihet til å tenke originalt om problemet ditt, ikke tvinge det inn i vårt rammeverk. Vi tør også å si de vanskelige tingene – som at løsningen kanskje ikke er teknologisk.</p>
+                <p>Vi bruker enkle verktøy og lang erfaring. Vi tør å si de vanskelige tingene – som at løsningen kanskje ikke er teknologisk, eller at dere bør droppe hele satsingen.</p>
             </div>
         </div>
     </section>
@@ -683,37 +536,6 @@
         </div>
     </section>
 
-    <section id="team">
-        <h2>Team</h2>
-        <div class="team-grid">
-            <div class="team-member">
-                <div class="team-photo">LA</div>
-                <h3>Leif Arne Bakker</h3>
-                <div class="role">Partner</div>
-                <p>Leif Arne er en erfaren teknolog, produktutvikler og leder med over 20 års erfaring fra skjæringspunktet mellom forretningsstrategi og teknologi. Han har ledet store transformasjonsprosjekter i offentlig sektor, bygget nye forretningsmodeller og digitale tjenester fra grunnen av, og vært CTO i både store konsulentselskaper og tech-startups.</p>
-                <p style="margin-top: 1rem;">Han har lang erfaring som strategisk IT-rådgiver fra BEKK Consulting og Capgemini, og har senere ledet produktutvikling og teknologiorganisasjoner i både etablerte selskaper som Posten og vekstselskaper. Leif er kjent for å tenke originalt om komplekse problemer, og for å tørre å ta de vanskelige valgene andre vegrer seg for.</p>
-                <div class="expertise">
-                    <h4>Ekspertise</h4>
-                    <p>Teknologi- og produktutvikling, virksomhetsarkitektur, forretningsmodeller, digital strategi, IT-transformasjon, maskinlæring</p>
-                </div>
-            </div>
-            
-            <div class="team-member placeholder">
-                <div class="team-photo">?</div>
-                <h3>Partner</h3>
-                <div class="role">Kommer snart</div>
-                <p>Vi bygger ut teamet med de beste folkene vi finner. Interessert i å bli med? Ta kontakt.</p>
-            </div>
-            
-            <div class="team-member placeholder">
-                <div class="team-photo">?</div>
-                <h3>Partner</h3>
-                <div class="role">Kommer snart</div>
-                <p>Vi bygger ut teamet med de beste folkene vi finner. Interessert i å bli med? Ta kontakt.</p>
-            </div>
-        </div>
-    </section>
-
     <div class="contact" id="kontakt">
         <h2>La oss snakke om problemet ditt</h2>
         <p>Har du et vanskelig problem? Vi lover ikke å løse det på første samtale, men vi lover å si ifra om vi ikke kan hjelpe deg.</p>
@@ -727,33 +549,22 @@
     <button class="theme-toggle" aria-label="Toggle dark mode">
         <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <circle cx="12" cy="12" r="5"/>
-            <line x1="12" y1="1" x2="12" y2="3"/>
-            <line x1="12" y1="21" x2="12" y2="23"/>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-            <line x1="1" y1="12" x2="3" y2="12"/>
-            <line x1="21" y1="12" x2="23" y2="12"/>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            <line x1="12" y1="1" x2="12" y2="3" stroke="currentColor" stroke-width="2"/>
+            <line x1="12" y1="21" x2="12" y2="23" stroke="currentColor" stroke-width="2"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="currentColor" stroke-width="2"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="currentColor" stroke-width="2"/>
+            <line x1="1" y1="12" x2="3" y2="12" stroke="currentColor" stroke-width="2"/>
+            <line x1="21" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="2"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="currentColor" stroke-width="2"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="currentColor" stroke-width="2"/>
         </svg>
         <svg class="moon-icon" style="display: none;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
         </svg>
     </button>
     
-    <!-- Gift Modal -->
-    <div class="gift-modal" id="giftModal">
-        <div class="gift-content">
-            <button class="gift-close" id="closeGift">&times;</button>
-            <p class="gift-message">
-                Gratulerer med dagen som var – for lenge siden! Denne er bestilt og kommer en av dagene nå. <br>Jeg tenker vi skal få det mye gøy med den – du og jeg, rundt i byen og opp i marka, kanskje til og med på fjellet. Gleder meg sånn til å sykle med deg, jenta mi!<br><br>
-                Jeg elsker deg ❤️❤️❤️
-            </p>
-            <img src="gave.png" alt="🎁">
-        </div>
-    </div>
-    
     <script>
+        // Hamburger menu
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('nav ul');
         const navLinks = document.querySelectorAll('nav ul a');
@@ -783,17 +594,14 @@
         const moonIcon = document.querySelector('.moon-icon');
         const html = document.documentElement;
         
-        // Function to get preferred theme
         function getPreferredTheme() {
             const savedTheme = localStorage.getItem('theme');
             if (savedTheme) {
                 return savedTheme;
             }
-            // Check system preference
             return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
         }
         
-        // Function to update theme
         function setTheme(theme) {
             html.setAttribute('data-theme', theme);
             localStorage.setItem('theme', theme);
@@ -807,41 +615,18 @@
             }
         }
         
-        // Set initial theme
         setTheme(getPreferredTheme());
         
-        // Listen for system theme changes
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
             if (!localStorage.getItem('theme')) {
                 setTheme(e.matches ? 'dark' : 'light');
             }
         });
         
-        // Toggle theme on click
         themeToggle.addEventListener('click', () => {
             const currentTheme = html.getAttribute('data-theme');
             const newTheme = currentTheme === 'light' ? 'dark' : 'light';
             setTheme(newTheme);
-        });
-        
-        // Gift modal
-        const giftModal = document.getElementById('giftModal');
-        const closeGift = document.getElementById('closeGift');
-        const contactButton = document.querySelector('a[href="#kontakt"].cta-button');
-        
-        contactButton.addEventListener('click', (e) => {
-            e.preventDefault();
-            giftModal.classList.add('active');
-        });
-        
-        closeGift.addEventListener('click', () => {
-            giftModal.classList.remove('active');
-        });
-        
-        giftModal.addEventListener('click', (e) => {
-            if (e.target === giftModal) {
-                giftModal.classList.remove('active');
-            }
         });
     </script>
 </body>
